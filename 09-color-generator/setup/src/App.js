@@ -6,13 +6,15 @@ import Values from 'values.js'
 function App() {
   const [color, setColor] = useState('');
   const [error, setError] = useState(false);
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(new Values('#f15025').all(10));
 
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
       let colors = new Values(color).all(10)
       setList(colors)
+      // if we wont set this once the user makes the mistake the input will always have red border
+      setError(false)
 
     } catch (error) {
       setError(true)
